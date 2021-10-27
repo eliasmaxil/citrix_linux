@@ -18,9 +18,14 @@ debconf-set-selections <<< "icaclient app_protection/install_app_protection sele
 debconf-show icaclient
 apt install -f $ICACLIENT
 
-# # Install certificate
+# # Install certificate 1
 cp ./StaatderNederlandenEVRootCA.crt /opt/Citrix/ICAClient/keystore/cacerts/
 chmod 644 /opt/Citrix/ICAClient/keystore/cacerts/StaatderNederlandenEVRootCA.crt
+/opt/Citrix/ICAClient/util/ctx_rehash
+
+# # Install certificate 2
+cp ./USERTrustRSACertificationAuthority.crt /opt/Citrix/ICAClient/keystore/cacerts/
+chmod 644 /opt/Citrix/ICAClient/keystore/cacerts/USERTrustRSACertificationAuthority.crt
 /opt/Citrix/ICAClient/util/ctx_rehash
 
 # Install HDX_RealTime_Media (Skype enhancement)
